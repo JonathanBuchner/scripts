@@ -1,0 +1,45 @@
+#stage {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  perspective: 1300;
+}
+
+#cube {
+  position: absolute;
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 300px;
+
+  transition: transform 2s ease ;
+  transform: rotateX(-30deg) rotateY(30deg);
+  transform-style: preserve-3d;
+}
+
+#cube .side {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  opacity: .8;
+}
+
+#cube .front {
+  transform: translate3d( 0, 0, 150px);
+}
+
+#cube .back {
+  transform: translate3d( 0, 0, -150px);
+}
+
+#cube .left {
+  transform: translateX(-50%) rotateY(90deg);
+}
+
+#cube .right {
+  transform: translateX(50%) rotateY(90deg);
+}
+
+#cube.move-cube {
+  transform: translate3d(0, calc(50vh - 150px), 0) rotateX(-30deg) rotateY(-60deg);
+}
