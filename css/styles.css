@@ -16,7 +16,6 @@
   right: 0;
 }
 
-
 #window-left:hover {
   background-image: linear-gradient( to left, transparent, rgba(80,80,80,.5));
 }
