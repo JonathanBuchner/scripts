@@ -1,34 +1,36 @@
-#window-left, #window-right {
+/***************************
+          Navigation
+***************************/
+#nav-left, #nav-right {
   position: fixed;
   top: 0;
   height: 100vh;
   width: 15%;
   cursor: pointer;
-  z-index: 2;S
+  z-index: 2; /*This is needed to have naviation fit over the stage*/
 }
 
-#window-left {
+#nav-left {
   left: 0;
-
 }
 
-#window-right {
+#nav-right {
   right: 0;
 }
 
-#window-left:hover, #window-left:focus {
+#nav-left:hover, #nav-left:focus {
   background-image: linear-gradient( to left, transparent, rgba(80,80,80,.5));
 }
 
-#window-right:hover,  #window-left:focus {
+#nav-right:hover,  #nav-right:focus {
     background-image: linear-gradient( to right, transparent, rgba(80,80,80,.5));
 }
 
-#window-left:active {
+#nav-left:active {
   background-image: linear-gradient( to left, transparent, rgba(80,80,80,.4));
 }
 
-#window-right:active {
+#nav-right:active {
     background-image: linear-gradient( to right, transparent, rgba(80,80,80,.4));
 }
 
@@ -41,6 +43,9 @@ i {
   transform: translate(-50%, -50%);
 }
 
+/***************************
+        Animation - Cube
+***************************/
 #stage {
   position: fixed;
   height: 100%;
@@ -117,6 +122,7 @@ h1 {
   transition-delay: 1.5s
 }
 
+/************Movement***********/
 #cube.move-cube, #shadow.move-shadow {
   transform: translate3d(0, calc(60vh - 150px), 0) rotateX(-30deg) rotateY(-60deg) scale(1);
 }
