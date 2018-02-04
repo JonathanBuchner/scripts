@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Practice making transformation and transitions in 3D space</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -10,23 +11,32 @@
 
   </head>
   <body>
+    <div id="window-left">
+      <i class="fa fa-chevron-left fa-3x"></i>
+    </div>
+    <div id="window-right">
+      <i class="fa fa-chevron-right fa-3x"></i>
+    </div>
     <div id="stage">
       <div id="cube">
-          <video width="400" class="front side">
+          <video class="front side">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
           </video>
-          <div class="front shadow"></div>
-          <video width="400" class="back side">
+          <video  class="back side">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
           </video>
-          <video width="400" class="left side">
+          <video class="left side">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
           </video>
-          <video width="400" class="right side">
+          <video class="right side">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
           </video>
       </div>
+      <div id="shadow">
+        <div class="bottom"></div>
+      </div>
     </div>
+    <h1>3D CSS Transformations</h1>
   </body>
 </html>

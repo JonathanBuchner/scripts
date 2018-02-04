@@ -1,3 +1,47 @@
+#window-left, #window-right {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 15%;
+  cursor: pointer;
+  z-index: 2;S
+}
+
+#window-left {
+  left: 0;
+
+}
+
+#window-right {
+  right: 0;
+}
+
+
+#window-left:hover {
+  background-image: linear-gradient( to left, transparent, rgba(80,80,80,.5));
+}
+
+#window-right:hover {
+    background-image: linear-gradient( to right, transparent, rgba(80,80,80,.5));
+}
+
+#window-left:active {
+  background-image: linear-gradient( to left, transparent, rgba(80,80,80,.4));
+}
+
+#window-right:active {
+    background-image: linear-gradient( to right, transparent, rgba(80,80,80,.4));
+}
+
+i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+
+  transform: translate(-50%, -50%);
+}
+
 #stage {
   position: fixed;
   height: 100%;
@@ -6,22 +50,32 @@
   perspective: 1300;
 }
 
-#cube {
+#cube, #shadow {
   position: absolute;
   left: calc(50% - 150px);
   width: 300px;
-  height: 300px;
-
-  transition: transform 2s ease ;
-  transform: rotateX(-30deg) rotateY(30deg);
+  transition-delay: .5s;
+  transition: all 2.5s ease ;
   transform-style: preserve-3d;
+}
+
+#cube {
+  transform: rotateX(-30deg) rotateY(30deg);
+  transition: transform 2.5s ease ;
+}
+
+#shadow {
+  transform: translateY(70vh) rotateX(-30deg) rotateY(30deg) scale(3);
 }
 
 #cube .side {
   position: absolute;
   width: inherit;
-  height: inherit;
   opacity: .8;
+  border-top: 1px solid rgba(15,15,15, .5);
+  border-bottom: 3px solid rgba(15,15,15, .5);
+  border-right: 1px solid rgba(15,15,15, .5);
+  box-shadow:  0 1px 4px rgba(15,15,15, 1);
 }
 
 #cube .front {
@@ -40,6 +94,41 @@
   transform: translateX(50%) rotateY(90deg);
 }
 
-#cube.move-cube {
-  transform: translate3d(0, calc(50vh - 150px), 0) rotateX(-30deg) rotateY(-60deg);
+#shadow .bottom {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+
+  background-image: radial-gradient(rgba(15,15,15, .4), rgba(15,15,15, .4) 40%, transparent );
+  opacity: 0;
+  filter: blur(20px);
+
+  transform: translateY(20px) rotateX(90deg);
+  transition: all 2s ease ;
+  transition-delay: .5s;
+}
+
+h1 {
+  position: relative;
+  top: 35vh;
+  text-align: center;
+  opacity: 0;
+
+  transition: all 1s ease;
+  transition-delay: 1.5s
+}
+
+#cube.move-cube, #shadow.move-shadow {
+  transform: translate3d(0, calc(60vh - 150px), 0) rotateX(-30deg) rotateY(-60deg) scale(1);
+}
+
+#shadow.move-shadow .bottom {
+  opacity: 1;
+  filter: blur(1px);
+}
+
+h1.move-title {
+  opacity: 1;
+  transform: translateY(-10vh);
+  text-shadow:  1px 1px 6px rgba(255,255,255, 1);
 }
