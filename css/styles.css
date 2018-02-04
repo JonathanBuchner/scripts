@@ -16,11 +16,11 @@
   right: 0;
 }
 
-#window-left:hover {
+#window-left:hover, #window-left:focus {
   background-image: linear-gradient( to left, transparent, rgba(80,80,80,.5));
 }
 
-#window-right:hover {
+#window-right:hover,  #window-left:focus {
     background-image: linear-gradient( to right, transparent, rgba(80,80,80,.5));
 }
 
