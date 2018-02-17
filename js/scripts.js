@@ -40,7 +40,13 @@ $(document).ready(
               video.play();
             }
           );
-          startAnimation();
+          //Even though the browser is told to play the videos, it takes at least a seconds.
+          setTimeout(
+            () => {
+              startAnimation();
+            }, 1000
+          );
+
         }
     }
 
