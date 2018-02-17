@@ -44,7 +44,8 @@ $(document).ready(
           setTimeout(
             () => {
               startAnimation();
-            }, 1000
+              console.log('Animation started')
+            }, 2000
           );
 
         }
