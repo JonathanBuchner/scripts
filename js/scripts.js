@@ -1,6 +1,9 @@
 
+
 $(document).ready(
   () => {
+    //Dom elements
+    let stage = $('#stage');
     let cube = $('#cube');
     let shadow = $('#shadow');
     let front = $('#cube .front')[0];
@@ -9,6 +12,7 @@ $(document).ready(
     let right = $('#cube .right')[0];
     let title = $('h1');
 
+    //Css styles
     let moveCube = 'move-cube';
     let moveShadow = 'move-shadow'
     let moveTitle = 'move-title';
@@ -16,18 +20,42 @@ $(document).ready(
     let videos = [front, back, left, right];
     let videoReady = 0;
 
+    //Hide stage initially until videos are ready to playVideos
+    stage.hide();
+
+    //Add classes to start css animations.
+    function startAnimation() {
+      stage.show();
+      cube.addClass(moveCube);
+      shadow.addClass(moveShadow);
+      title.addClass(moveTitle);
+    }
+
+    //If all videos are ready to play, play the vidoes and call startAnimation
+    function checkVideosReadyToPlay() {
+        if (videos.length === videoReady) {
+          //Play each video
+          videos.forEach(
+            (video) => {
+              video.play();
+            }
+          );
+          startAnimation();
+        }
+    }
+
+    //Add event listerns to count and wait until videos are ready.
     videos.forEach(
       (video) => {
         video.addEventListener('canplay',
-         function() {
-            this.play();
+         () => {
+            videoReady++;
+            checkVideosReadyToPlay();
           }
         );
       }
     );
 
-    cube.addClass(moveCube);
-    shadow.addClass(moveShadow);
-    title.addClass(moveTitle);
+
   }
 );

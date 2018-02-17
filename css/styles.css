@@ -83,6 +83,7 @@ i {
 }
 
 #cube .front {
+  background-color: green;
   transform: translate3d( 0, 0, 150px);
 }
 
@@ -137,3 +138,7 @@ h1.move-title {
   transform: translateY(-10vh);
   text-shadow:  1px 1px 6px rgba(255,255,255, 1);
 }
+
+/*********************************
+*   Loading Animation
+*********************************/
