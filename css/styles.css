@@ -1,3 +1,7 @@
+body {
+  min-width: 400px;
+}
+
 /***************************
           Navigation
 ***************************/
@@ -34,7 +38,7 @@
     background-image: linear-gradient( to right, transparent, rgba(80,80,80,.4));
 }
 
-i {
+#nav-left .nav-previous, #nav-right .nav-next {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,15 +79,25 @@ i {
 #cube .side {
   position: absolute;
   width: inherit;
-  opacity: .8;
-  border-top: 1px solid rgba(15,15,15, .5);
-  border-bottom: 3px solid rgba(15,15,15, .5);
-  border-right: 1px solid rgba(15,15,15, .5);
+  opacity: .7;
   box-shadow:  0 1px 4px rgba(15,15,15, 1);
 }
 
+#cube .side:hover {
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+
+#cube .side.no-opacity {
+  opacity: 1;
+}
+
+#cube .side.hide, #shadow.hide {
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
 #cube .front {
-  background-color: green;
   transform: translate3d( 0, 0, 150px);
 }
 
@@ -124,8 +138,24 @@ h1 {
 }
 
 /************Movement***********/
-#cube.move-cube, #shadow.move-shadow {
-  transform: translate3d(0, calc(60vh - 150px), 0) rotateX(-30deg) rotateY(-60deg) scale(1);
+#cube.move-cube-down, #shadow.move-shadow {
+  transform: translate3d(0, calc(60vh - 150px), 0) rotateX(-30deg) rotateY(-60deg) scale3d(1,1,1);
+}
+
+#cube.move-cube-show-front {
+    transform: translate3d(0, calc(60vh - 300px), 0) rotateX(0deg) rotateY(0deg) scale3D(2,2,2);
+}
+
+#cube.move-cube-show-back {
+    transform: translate3d(0, calc(60vh - 300px), 0) rotateX(0deg) rotateY(-180deg) scale3d(2,2,2);
+}
+
+#cube.move-cube-show-left {
+    transform: translate3d(0, calc(60vh - 300px), 0) rotateX(0deg) rotateY(90deg) scale3d(2,2,2);
+}
+
+#cube.move-cube-show-right {
+    transform: translate3d(0, calc(60vh - 300px), 0) rotateX(0deg) rotateY(-90deg) scale3d(2,2,2);
 }
 
 #shadow.move-shadow .bottom {
@@ -142,3 +172,20 @@ h1.move-title {
 /*********************************
 *   Loading Animation
 *********************************/
+#loading-video {
+  position: absolute;
+  left: calc(50%);
+  top: 50vh;
+  transform: translate( -50%, -75%);
+  color:blue;
+}
+
+#loading-video.green {
+  color: green;
+  transition: color 2.5s ease;
+}
+
+#loading-video.hide {
+  opacity: 0;
+  transition: opacity .3s linear;
+}
