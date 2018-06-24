@@ -3,7 +3,8 @@
 $(document).ready(
   () => {
     //Dom elements
-    let loadingVideo = $('#loading-video');
+    let loading = $('#loading');
+    let replay = $('.replay');
     let stage = $('#stage');
     let cube = $('#cube');
     let shadow = $('#shadow');
@@ -15,7 +16,6 @@ $(document).ready(
     let leftFace = $('#cube .left');
     let right = $('#cube .right')[0];
     let rightFace = $('#cube .right');
-    let title = $('h1');
 
     //Css style classes
     let green = 'green';
@@ -28,26 +28,27 @@ $(document).ready(
     let moveCubeShowRight = 'move-cube-show-right';
     let removeOpacity = 'no-opacity';
     let moveShadow = 'move-shadow'
-    let moveTitle = 'move-title';
     let repositionBottom = 'reposition-bottom';
 
 
     let videos = [front, back, left, right];
     let videoReady = 0;
 
+    replay.click(
+      () => {
+        location.reload();
+      }
+    );
+
     //Hide stage initially until videos are ready to playVideos
-    loadingVideo.addClass(green);
     stage.hide();
 
     //Add and remove classes for start css animations.
     function startAnimation() {
       stage.show();
-      loadingVideo.addClass(hide).removeClass(green); //Hides spinnger //Returns spinner back to blue
-      $('#loading-spinner').removeClass('fa-spin');   //Stops spinner from spinning
-
+      loading.hide();
       cube.addClass(moveCube);                        //Starts downward cube animation
       shadow.addClass(moveShadow);                    //Starts moving shadow up
-      title.addClass(moveTitle);                      //Moves title up
     }
 
     //If all videos are ready to play, play the vidoes and call startAnimation
@@ -64,17 +65,10 @@ $(document).ready(
           setTimeout(
             () => {
               startAnimation();
-              console.log('Animation started');
             }, 2000
           );
 
         }
-    }
-
-    //This repositions the video loading animiation, reusing it as a tool to reset the page.
-    function repositionLoadingVideo() {
-      loadingVideo.addClass(repositionBottom);
-      loadingVideo.addClass(show);
     }
 
     function stopOtherVideosPlaySelected(chosenVideo) {
@@ -94,7 +88,6 @@ $(document).ready(
       if (face !== leftFace) leftFace.addClass(hide);
       if (face !== rightFace) rightFace.addClass(hide);
       shadow.addClass(hide);
-      repositionLoadingVideo();
     }
 
     frontFace.click(
@@ -138,24 +131,6 @@ $(document).ready(
             checkVideosReadyToPlay();
           }
         );
-      }
-    );
-
-    loadingVideo.mouseover(
-      () => {
-        $('h2.replay').addClass('hover');
-      }
-    )
-
-    loadingVideo.mouseout(
-      () => {
-        $('h2.replay').removeClass('hover');
-      }
-    )
-
-    loadingVideo.click(
-      () => {
-          location.reload();
       }
     );
   }
